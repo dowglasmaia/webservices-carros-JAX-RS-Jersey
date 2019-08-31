@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.maia.domain.Carro;
 
@@ -31,7 +33,6 @@ public class CarroDAO extends BaseDAO {
 			}
 
 		} finally {
-
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -40,6 +41,35 @@ public class CarroDAO extends BaseDAO {
 			}
 		}
 		return null;
+	}
+
+	// find ByName
+	public List<Carro> findByName(String nome) throws SQLException {
+		List<Carro> carros = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = connection();
+			stmt = conn.prepareStatement("select * from carro where lower(nome) like ?");
+			stmt.setString(1, "%" + nome.toLowerCase() + "%");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Carro c = createCarro(rs);
+				carros.add(c);
+			}
+			rs.close();
+
+		} finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		}
+		return null;
+
 	}
 
 	// create
