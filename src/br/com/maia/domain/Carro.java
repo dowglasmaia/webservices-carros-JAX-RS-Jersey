@@ -25,6 +25,23 @@ public class Carro implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+	public Carro(Long id, String tipo, String nome, String desc, String urlFoto, String urlVideo, String latitude,
+			String logitude) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.nome = nome;
+		this.desc = desc;
+		this.urlFoto = urlFoto;
+		this.urlVideo = urlVideo;
+		this.latitude = latitude;
+		this.logitude = logitude;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
