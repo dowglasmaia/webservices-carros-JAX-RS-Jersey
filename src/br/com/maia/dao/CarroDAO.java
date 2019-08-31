@@ -17,7 +17,7 @@ public class CarroDAO extends BaseDAO {
 	private Carro createCarro(ResultSet rs) throws SQLException {
 		Carro c = new Carro(rs.getLong("id"), rs.getString("tipo"), rs.getString("nome"), rs.getString("descricao"),
 				rs.getString("url_foto"), rs.getString("url_video"), rs.getString("latitude"),
-				rs.getString("logitude"));
+				rs.getString("longitude"));
 
 		return c;
 	}
@@ -146,12 +146,12 @@ public class CarroDAO extends BaseDAO {
 			// insert via JDBC
 			if (c.getId() == null) {
 				stmt = conn.prepareStatement(
-						"insert into carro (tipo,nome,descricao,url_foto,url_video,latitude,logitude) VALUES(?,?,?,?,?,?,?)",
+						"insert into carro (tipo,nome,descricao,url_foto,url_video,latitude,longitude) VALUES(?,?,?,?,?,?,?)",
 						Statement.RETURN_GENERATED_KEYS);
 			} else {
 				// update
 				stmt = conn.prepareStatement(
-						"update carro set tipo=?,nome=?,descricao=?,url_foto=?,url_video=?,latitude=?,logitude=?");
+						"update carro set tipo=?,nome=?,descricao=?,url_foto=?,url_video=?,latitude=?,longitude=?");
 
 			}
 			// save
@@ -161,7 +161,7 @@ public class CarroDAO extends BaseDAO {
 			stmt.setString(4, c.getUrlFoto());
 			stmt.setString(5, c.getUrlVideo());
 			stmt.setString(6, c.getLatitude());
-			stmt.setString(7, c.getLogitude());
+			stmt.setString(7, c.getLongitude());
 			// update
 			if (c.getId() != null) {
 				stmt.setLong(8, c.getId());

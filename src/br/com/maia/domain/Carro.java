@@ -19,7 +19,7 @@ public class Carro implements Serializable {
 
 	private String latitude;
 
-	private String logitude;
+	private String longitude;
 
 	public Carro() {
 		// TODO Auto-generated constructor stub
@@ -28,7 +28,7 @@ public class Carro implements Serializable {
 	
 	
 	public Carro(Long id, String tipo, String nome, String desc, String urlFoto, String urlVideo, String latitude,
-			String logitude) {
+			String longitude) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
@@ -37,7 +37,7 @@ public class Carro implements Serializable {
 		this.urlFoto = urlFoto;
 		this.urlVideo = urlVideo;
 		this.latitude = latitude;
-		this.logitude = logitude;
+		this.longitude = longitude;
 	}
 
 
@@ -98,13 +98,19 @@ public class Carro implements Serializable {
 		this.latitude = latitude;
 	}
 
-	public String getLogitude() {
-		return logitude;
+	
+
+	public String getLongitude() {
+		return longitude;
 	}
 
-	public void setLogitude(String logitude) {
-		this.logitude = logitude;
+
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -134,7 +140,7 @@ public class Carro implements Serializable {
 	@Override
 	public String toString() {
 		return "Carro[id=" + id + ", tipo=" + tipo + ", nome=" + nome + ", desc=" + desc + ", urlForo=" + urlFoto
-				+ ", urlVideo=" + urlVideo + ", latitude=" + latitude + ", logitude=" + logitude + "]";
+				+ ", urlVideo=" + urlVideo + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 
 }
