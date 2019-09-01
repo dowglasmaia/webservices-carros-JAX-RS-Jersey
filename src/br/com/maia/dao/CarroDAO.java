@@ -15,11 +15,17 @@ public class CarroDAO extends BaseDAO {
 
 	// create - util
 	private Carro createCarro(ResultSet rs) throws SQLException {
-		Carro c = new Carro(rs.getLong("id"), rs.getString("tipo"), rs.getString("nome"), rs.getString("descricao"),
-				rs.getString("url_foto"), rs.getString("url_video"), rs.getString("latitude"),
-				rs.getString("longitude"));
+		Carro cr = new Carro();
+		cr.setId(rs.getLong("id"));
+		cr.setTipo(rs.getString("tipo"));
+		cr.setNome(rs.getString("nome"));
+		cr.setDesc(rs.getString("descricao"));
+		cr.setUrlFoto(rs.getString("url_foto"));
+		cr.setUrlVideo(rs.getString("url_video"));
+		cr.setLatitude(rs.getString("latitude"));
+		cr.setLongitude(rs.getString("longitude"));
 
-		return c;
+		return cr;
 	}
 
 	// Buscar por ID
@@ -151,7 +157,7 @@ public class CarroDAO extends BaseDAO {
 			} else {
 				// update
 				stmt = conn.prepareStatement(
-						"update carro set tipo=?,nome=?,descricao=?,url_foto=?,url_video=?,latitude=?,longitude=?");
+						"update carro set tipo=?,nome=?,descricao=?,url_foto=?,url_video=?,latitude=?,longitude=? where id=?");
 
 			}
 			// save
