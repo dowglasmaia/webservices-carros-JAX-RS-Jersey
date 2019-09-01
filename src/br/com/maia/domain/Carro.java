@@ -2,6 +2,9 @@ package br.com.maia.domain;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Carro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,8 +28,6 @@ public class Carro implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
 	public Carro(Long id, String tipo, String nome, String desc, String urlFoto, String urlVideo, String latitude,
 			String longitude) {
 		super();
@@ -39,8 +40,6 @@ public class Carro implements Serializable {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -98,19 +97,13 @@ public class Carro implements Serializable {
 		this.latitude = latitude;
 	}
 
-	
-
 	public String getLongitude() {
 		return longitude;
 	}
 
-
-
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
-
-
 
 	@Override
 	public int hashCode() {
