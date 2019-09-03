@@ -21,6 +21,9 @@ public class CarroServlet extends HttpServlet {
 
 	private CarroService carroService = new CarroService();
 
+	/* 
+	 */// ======XML==========*/
+	/*
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -37,5 +40,24 @@ public class CarroServlet extends HttpServlet {
 		ServletUtil.writeXML(resp, xml);
 
 	}
+	
+	*/
+	/* ======JSON===== */
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		List<Carro> carros = carroService.getAll();
+
+		// class ListaCarros
+		ListaCarros list = new ListaCarros();
+		list.setCarros(carros);
+
+		// gera JSON
+		String json = JAXBUtil.toJSON(list);
+
+		// escreve o JSON na Resposta do servlet com application/json
+		ServletUtil.writeJSON(resp, json);
+	}
+	
+	
 }
